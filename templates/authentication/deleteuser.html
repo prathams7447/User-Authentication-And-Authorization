@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEL Delete User</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <!-- Add Bootstrap CSS link (assumes you have Bootstrap installed) -->
+    <!-- <link rel="stylesheet" href="path/to/bootstrap.min.css"> -->
+
+    <style>
+        .form-group{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .btn{
+            margin-left: 3px;
+        }
+        .login-container{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Display Messages -->
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    {% endfor %}
+
+    <!-- User Section -->
+    <div class="login-container">
+    <form method="post" action="/deleteuser" class="mb-2">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username" Required>
+        </div>
+        <button type="submit" style="margin-top: 15px;" class="btn btn-danger">Delete</button>
+    </form>
+</div>
+</body>
+</html> 
